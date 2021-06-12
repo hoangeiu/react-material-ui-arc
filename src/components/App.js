@@ -4,6 +4,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import theme from "./ui/Theme";
 import Footer from "./ui/Footer";
+import LandingPage from "../components/LandingPage";
 
 function App() {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -14,7 +15,11 @@ function App() {
       <BrowserRouter>
         <Header value={value} setValue={setValue} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} />
         <Switch>
-          <Route exact path="/" component={() => <div>Home</div>} />
+          <Route
+            exact
+            path="/"
+            render={(props) => <LandingPage {...props} setValue={setValue} setSelectedIndex={setSelectedIndex} />}
+          />
           <Route exact path="/services" component={() => <div>Services</div>} />
           <Route exact path="/customsoftware" component={() => <div>Custom Software</div>} />
           <Route exact path="/mobileapps" component={() => <div>Mobile Apps</div>} />
@@ -24,7 +29,7 @@ function App() {
           <Route exact path="/contact" component={() => <div>Contact</div>} />
           <Route exact path="/estimate" component={() => <div>Estimate</div>} />
         </Switch>
-        <Footer value={value} setValue={setValue} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} />
+        <Footer setValue={setValue} setSelectedIndex={setSelectedIndex} />
       </BrowserRouter>
     </ThemeProvider>
   );
