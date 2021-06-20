@@ -5,6 +5,12 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import theme from "./ui/Theme";
 import Footer from "./ui/Footer";
 import LandingPage from "../components/LandingPage";
+import Services from "./Services";
+import CustomSoftware from "./CustomSoftware";
+import MobileApp from "./MobileApp";
+import Websites from "./Websites";
+import Revolution from "./Revolution";
+import About from "./About";
 
 function App() {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -20,12 +26,36 @@ function App() {
             path="/"
             render={(props) => <LandingPage {...props} setValue={setValue} setSelectedIndex={setSelectedIndex} />}
           />
-          <Route exact path="/services" component={() => <div>Services</div>} />
-          <Route exact path="/customsoftware" component={() => <div>Custom Software</div>} />
-          <Route exact path="/mobileapps" component={() => <div>Mobile Apps</div>} />
-          <Route exact path="/websites" component={() => <div>Websites</div>} />
-          <Route exact path="/revolution" component={() => <div>The Revolution</div>} />
-          <Route exact path="/about" component={() => <div>About Us</div>} />
+          <Route
+            exact
+            path="/services"
+            render={(props) => <Services {...props} setValue={setValue} setSelectedIndex={setSelectedIndex} />}
+          />
+          <Route
+            exact
+            path="/customsoftware"
+            render={(props) => <CustomSoftware {...props} setValue={setValue} setSelectedIndex={setSelectedIndex} />}
+          />
+          <Route
+            exact
+            path="/mobileapps"
+            render={(props) => <MobileApp {...props} setValue={setValue} setSelectedIndex={setSelectedIndex} />}
+          />
+          <Route
+            exact
+            path="/websites"
+            render={(props) => <Websites {...props} setValue={setValue} setSelectedIndex={setSelectedIndex} />}
+          />
+          <Route
+            exact
+            path="/revolution"
+            render={(props) => <Revolution {...props} setValue={setValue} setSelectedIndex={setSelectedIndex} />}
+          />
+          <Route
+            exact
+            path="/about"
+            render={(props) => <About {...props} setValue={setValue} setSelectedIndex={setSelectedIndex} />}
+          />
           <Route exact path="/contact" component={() => <div>Contact</div>} />
           <Route exact path="/estimate" component={() => <div>Estimate</div>} />
         </Switch>

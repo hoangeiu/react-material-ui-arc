@@ -19,7 +19,6 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 
 import logo from "../../assets/logo.svg";
-import { CalendarViewDaySharp } from "@material-ui/icons";
 
 function ElevationScroll(props) {
   const { children } = props;
