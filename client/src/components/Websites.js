@@ -110,7 +110,7 @@ const Websites = (props) => {
               <img
                 src={analytics}
                 style={{ marginLeft: "-2.75em" }}
-                atl="graph with magnifying glass revealing 1's and 0's"
+                alt="graph with magnifying glass revealing 1's and 0's"
               />
             </Grid>
           </Grid>
@@ -139,7 +139,7 @@ const Websites = (props) => {
               </Typography>
             </Grid>
             <Grid item>
-              <img src={ecommerce} atl="world outline made of dollar signs" />
+              <img src={ecommerce} alt="world outline made of dollar signs" />
             </Grid>
           </Grid>
         </Grid>
@@ -167,7 +167,7 @@ const Websites = (props) => {
               </Typography>
             </Grid>
             <Grid item>
-              <img src={outreach} style={{ marginLeft: "-2.75em" }} atl="megaphone" />
+              <img src={outreach} style={{ marginLeft: "-2.75em" }} alt="megaphone" />
             </Grid>
           </Grid>
         </Grid>
@@ -195,7 +195,7 @@ const Websites = (props) => {
               </Typography>
             </Grid>
             <Grid item>
-              <img src={seo} atl="website standing on winnder's podium" />
+              <img src={seo} alt="website standing on winnder's podium" />
             </Grid>
           </Grid>
         </Grid>

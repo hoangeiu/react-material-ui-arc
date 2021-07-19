@@ -193,11 +193,16 @@ const Header = (props) => {
           break;
       }
     });
-  }, [value, menuOptions, selectedIndex, routes, props]);
+  }, [value, menuOptions, routes, props, setSelectedIndex]);
 
   const tabs = (
     <React.Fragment>
-      <Tabs value={value} onChange={handleChange} className={classes.tabContainer} indicatorColor="primary">
+      <Tabs
+        value={value !== 5 ? value : undefined}
+        onChange={handleChange}
+        className={classes.tabContainer}
+        indicatorColor="primary"
+      >
         {routes.map((route, index) => (
           <Tab
             key={`${route}${index}`}

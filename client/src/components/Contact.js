@@ -222,7 +222,7 @@ const Contact = (props) => {
               </Grid>
             </Grid>
             {/* TextField */}
-            <Grid item container direction="column" style={{ maxWidth: "20em" }}>
+            <Grid item container direction="column" style={{ width: "20em" }}>
               <Grid item style={{ marginBottom: "0.5em" }}>
                 <TextField
                   label="Name"
@@ -255,12 +255,13 @@ const Contact = (props) => {
                 />
               </Grid>
             </Grid>
-            <Grid item style={{ maxWidth: "20em" }}>
+            <Grid item style={{ width: "20em" }}>
               <TextField
                 InputProps={{ disableUnderline: true }}
                 value={message}
                 multiline
                 fullWidth
+                placeholder="Tell us more about your project"
                 rows={10}
                 id="message"
                 onChange={(event) => setMessage(event.target.value)}
@@ -291,13 +292,13 @@ const Contact = (props) => {
         style={{ zIndex: 1302 }}
         open={open}
         onClose={() => setOpen(false)}
-        fullScreen={matchesXS}
+        fullScreen={matchesSM}
         PaperProps={{
           style: {
             paddingTop: matchesXS ? "1em" : "5em",
             paddingBottom: matchesXS ? "1em" : "5em",
-            paddingLeft: matchesXS ? 0 : matchesSM ? "5em" : matchesMD ? "10em" : "20em",
-            paddingRight: matchesXS ? 0 : matchesSM ? "5em" : matchesMD ? "10em" : "20em",
+            paddingLeft: matchesXS ? 0 : matchesSM ? "5em" : matchesMD ? "15em" : "25em",
+            paddingRight: matchesXS ? 0 : matchesSM ? "5em" : matchesMD ? "15em" : "25em",
           },
         }}
       >
@@ -339,7 +340,7 @@ const Contact = (props) => {
                 onChange={onChange}
               />
             </Grid>
-            <Grid item style={{ maxWidth: matchesXS ? "100%" : "20em" }}>
+            <Grid item style={{ width: matchesSM ? "100%" : "20em" }}>
               <TextField
                 InputProps={{ disableUnderline: true }}
                 value={message}
