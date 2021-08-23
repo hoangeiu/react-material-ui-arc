@@ -67,12 +67,13 @@ const CallToAction = (props) => {
       <Grid item style={{ marginLeft: matchesSM ? 0 : "5em", textAlign: matchesSM ? "center" : "inherit" }}>
         <Grid container direction="column">
           <Grid item>
-            <Typography variant="h2">
+            <Typography variant="h2" gutterBottom style={{ lineHeight: matchesSM ? 1.1 : null }}>
               Simple Software.
               <br />
+              {matchesSM && <br />}
               Revolutionary Results.
             </Typography>
-            <Typography variant="subtitle2" style={{ fontSize: "1.5rem" }}>
+            <Typography variant="subtitle2" style={{ fontSize: matchesSM ? "1.25rem" : "1.5rem" }}>
               Take advantage of the 21st Century.
             </Typography>
             <Grid container item justify={matchesSM ? "center" : undefined}>

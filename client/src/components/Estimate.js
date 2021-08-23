@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Lottie from "react-lottie";
 import axios from "axios";
 import { cloneDeep } from "lodash";
@@ -337,6 +337,8 @@ const Estimate = () => {
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
 
+  const myRef = useRef(null);
+
   const [questions, setQuestions] = useState(defaultQuestions);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [name, setName] = useState("");
@@ -372,6 +374,10 @@ const Estimate = () => {
   };
 
   const nextQuestion = () => {
+    if (matchesSM) {
+      window.scrollTo(0, myRef.current.offsetTop + 75);
+    }
+
     const newQuestions = cloneDeep(questions);
     const currentlyActive = newQuestions.filter((question) => question.active);
     const activeIndex = currentlyActive[0].id - 1;
@@ -384,6 +390,10 @@ const Estimate = () => {
   };
 
   const previousQuestion = () => {
+    if (matchesSM) {
+      window.scrollTo(0, myRef.current.offsetTop + 75);
+    }
+
     const newQuestions = cloneDeep(questions);
     const currentlyActive = newQuestions.filter((question) => question.active);
     const activeIndex = currentlyActive[0].id - 1;
@@ -439,6 +449,9 @@ const Estimate = () => {
     switch (newSelected.title) {
       case "Custom Software Development":
       case "iOS/Android App Development":
+        if (matchesSM) {
+          window.scrollTo(0, myRef.current.offsetTop + 75);
+        }
         setQuestions(softwareQuestions);
         setService(newSelected.title);
         setPlatforms([]);
@@ -449,6 +462,9 @@ const Estimate = () => {
         break;
 
       case "Website Development":
+        if (matchesSM) {
+          window.scrollTo(0, myRef.current.offsetTop + 75);
+        }
         setQuestions(websiteQuestions);
         setService(newSelected.title);
         setPlatforms([]);
@@ -607,23 +623,22 @@ const Estimate = () => {
     let disabled = true;
 
     const emptySelections = questions
+      .filter((question) => question.title !== "Which features do you expect to use?")
       .map((question) => question.options.filter((option) => option.selected))
       .filter((question) => question.length === 0);
-    console.log(emptySelections);
-    console.log(questions.length);
+
+    const featuresSelected = questions
+      .filter((question) => question.title === "Which features do you expect to use?")
+      .map((question) => question.options.filter((option) => option.selected))
+      .filter((selections) => selections.length > 0);
+
     if (questions.length === 2) {
       if (emptySelections.length === 1) {
-        console.log("2");
         disabled = false;
       }
     } else if (questions.length === 1) {
-      console.log("1");
       disabled = true;
-    } else if (
-      emptySelections.length < 3 &&
-      questions[questions.length - 1].options.filter((option) => option.selected).length > 0
-    ) {
-      console.log("3");
+    } else if (emptySelections.length === 1 && featuresSelected.length > 0) {
       disabled = false;
     }
 
@@ -751,7 +766,7 @@ const Estimate = () => {
           .filter((question) => question.active)
           .map((question, index) => (
             <React.Fragment key={index}>
-              <Grid item>
+              <Grid item ref={myRef}>
                 <Typography
                   variant="h2"
                   align="center"
